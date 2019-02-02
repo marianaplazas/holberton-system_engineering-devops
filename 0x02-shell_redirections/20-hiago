@@ -1,2 +1,2 @@
-#!/bin/bash
-tr -c `[c,C]´
+B#!/bin/bash
+tr -c '[c,C]'
