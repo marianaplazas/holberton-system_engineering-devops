@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#this script
 a=0
 while [ $a -lt 10 ]
 do
