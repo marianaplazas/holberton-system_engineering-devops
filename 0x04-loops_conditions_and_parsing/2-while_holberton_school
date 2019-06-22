@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+a=0
+while [ $a -lt 10 ]
+do
+echo "Holberton School"
+let a=a+1
+done 

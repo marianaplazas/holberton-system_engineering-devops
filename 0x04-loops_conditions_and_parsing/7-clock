@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#this script display hours
+hours=0
+while [ $hours -lt 13 ]
+do
+    minutes=1
+    echo "Hour: "$hours
+    while [ $minutes -lt 60 ]; do
+	echo $minutes
+	let minutes=minutes+1
+    done
+    let hours=hours+1
+done 

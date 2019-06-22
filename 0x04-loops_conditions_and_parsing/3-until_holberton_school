@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#this script use the while loop
+a=10
+until [ $a -lt 1 ]
+do
+echo "Holberton School"
+let a=a-1
+done 

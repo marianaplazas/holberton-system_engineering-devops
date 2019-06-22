@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#this script use loop for in ls
+for i in *;
+do
+    echo "$i" |cut -d"-" -f2
+done
