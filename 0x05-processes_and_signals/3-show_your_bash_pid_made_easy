@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#this list all proccess with bash
+pgrep -xl bash

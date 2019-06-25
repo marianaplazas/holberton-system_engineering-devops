@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#this kill toy story bye Buzz :(( easy 
+pkill -f "7-highlander"

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#this is toy story script
+trap "echo I am invincible!!!" SIGTERM
+while true
+do
+echo "to infinity and beyond"
+sleep 2
+done
