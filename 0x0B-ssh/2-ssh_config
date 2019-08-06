@@ -1,0 +1,4 @@
+# file with user config
+Host 34.74.134.215
+     PasswordAuthentication no
+     IdentityFile ~/.ssh/holberton
