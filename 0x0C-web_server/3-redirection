@@ -5,5 +5,5 @@
 sudo apt-get update
 sudo apt-get -y install nginx
 echo "Holberton School" | sudo tee /usr/share/nginx/html/index.html
-sudo sed -i "35i 301" /etc/nginx/sites-available/default
+sudo sed -i "30i 301" /etc/nginx/sites-available/default
 sudo service nginx start
