@@ -1,20 +1,19 @@
 #puppet advance
 exec { 'update':
-command => 'usr/bin/apt-get update'
+  command  => 'sudo apt-get update',
+  provider => shell,
 }
-
--> package{'nginx':
+-> package {'nginx':
   ensure => present,
 }
--> file_line {'line':
+-> file_line { 'header line':
   ensure => present,
   path   => '/etc/nginx/sites-available/default',
   line   => "	location / {
-  	 add_header X-Served-By ${hostname};",
+  add_header X-Served-By ${hostname};",
   match  => '^\tlocation / {',
 }
-
--> exec { 'restart nginx':
+-> exec { 'restart service':
   command  => 'sudo service nginx restart',
   provider => shell,
 }
