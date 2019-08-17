@@ -1,16 +1,16 @@
 # puppet adavance task
-exec { 'apt_update':
+exec { 'update':
   command  => 'sudo apt-get update',
   provider => shell,
 }
 -> package{'nginx':
   ensure => present,
 }
--> file_line {'heades':
-  path   => '/etc/nginx/sites-available/default',
-  line   => "http {
-  	 add_header X-Served-By ${hostname};",
-  match  => 'http {',
+-> file_line {'header':
+  path => 'etc/nginx/conf/nginx.conf',
+  match => 'http {',	
+  line => "http {
+     	add_header X-Served_By "${hostname}";",
 }
 -> exec { 'restart':
   command  => 'sudo service nginx restart',
