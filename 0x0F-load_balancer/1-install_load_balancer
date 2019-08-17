@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Ha Proxy
+
+CONFIG="\\\nlisten appname 0.0.0.0:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 768-web-01 34.74.134.215 check\n\tserver 768-web-02 35.196.166.20 check\n"
+
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo apt-get install -y haproxy=1.5\*
+sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup
+sudo sed -i "\$a $CONFIG" /etc/haproxy/haproxy.cfg
+sudo service haproxy start
