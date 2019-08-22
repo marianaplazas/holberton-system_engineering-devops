@@ -3,6 +3,6 @@
 pkill apache2
 chown nginx: /etc/nginx/nginx.conf
 chmod 600 /etc/nginx/nginx.conf
-#sed -i "s/80 default_/8080 default_/" /etc/nginx/sites-enabled/default
-sed -i "s/listen 80;/listen 8080;/g" nginx.conf
+sed -i "s/80 default_/8080 default_/" /etc/nginx/sites-enabled/default
+#sed -i "s/listen 80;/listen 8080;/g" nginx.conf
 sudo -u nginx service nginx start
