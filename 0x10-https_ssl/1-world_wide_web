@@ -16,10 +16,10 @@ if [ -z "$subdomain" ]
 then
    for sub in "${subdomain_list[@]}"
    do
-       dig_func "$domain" sub
+       print_fun "$domain" sub
    done
 else
     sub=$subdomain
-    dig_func "$domain" "$sub"
+    print_fun "$domain" "$sub"
 fi
 exit 0
