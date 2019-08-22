@@ -55,8 +55,8 @@ frontend www-https
 
 backend www-backend
    redirect scheme https if !{ ssl_fc }
-   server 778-web-01 34.74.134.215:80 check
-   server 778-web-02 35.196.166.20:80 check
+   server 768-web-01 34.74.134.215:80 check
+   server 768-web-02 35.196.166.20:80 check
 
 backend letsencrypt-backend
    server letsencrypt 127.0.0.1:54321
