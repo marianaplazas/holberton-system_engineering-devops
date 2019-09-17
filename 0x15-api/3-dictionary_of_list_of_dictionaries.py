@@ -19,4 +19,4 @@ if __name__ == "__main__":
                             "completed": str(tasks.get("completed")),
                             "username": names.get("name")})
         with open("todo_all_employees.json", 'a') as f:
-            f.write(json.dumps({usr_id: csv_arr})
+            f.write(json.dumps({usr_id: csv_arr}))
