@@ -1,23 +1,23 @@
 #!/usr/bin/python3
 """
-Gets the completed todo list of an employeed with the id
+Gets the completed todo list of an employed with the id
 """
-from requests import get
+import requests
 import sys
 
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com"
-    users = get(url + "/users", params={"id": sys.argv[1]}).json()
-    for names in users:
-        user_id = names.get('id')
-        todo_list = get(url + "/todos", params={"userId": user_id})
+    users = requests.get(url + "/users", params={"id": sys.argv[1]})
+    for names in users.json():
+        usr_id = names.get('id')
+        todo_list = requests.get(url + "/todos", params={"userId": usr_id})
         task_complete = 0
-        tasks= []
+        tasks = []
         for task in todo_list.json():
-            if tasks.get('completed') is True:
+            if task.get('completed') is True:
                 task_complete += 1
-                tasks_array.append(tasks.get('title'))
+                tasks.append(task.get('title'))
         print("Employee {:s} is done with tasks({:d}/{:d}):\n\t {}".
               format(names.get('name'), task_complete,
                      len(todo_list.json()), "\n\t ".join(tasks)))
