@@ -4,20 +4,22 @@ python script to export to csv
 """
 import csv
 import requests
-import sys
-
+from sys import argv
 
 if __name__ == "__main__":
-    usr_id = sys.argv[1]
-    todo_list = requests.get(
-        "https://jsonplaceholder.typicode.com/todos").json()
-    user = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(
-        usr_id)).json()
-    username = user.get("username")
-    with open('{}.csv'.format(usr_id), 'w', newline='') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=' ',
-                                quotechar='"', quoting=csv.QUOTE_ALL)
-        for task in todo_list:
-            if task.get("userId") == int(usr_id):
-                spamwriter.writerow([usr_id, username, task.get("completed"),
-                                     task.get("title")])
+    if len(argv) > 1:
+        user = argv[1]
+        api_url = "https://jsonplaceholder.typicode.com/"
+        req_user = requests.get("{}users/{}".format(api_url, user))
+        username = req_user.json().get("username")
+        all_tasks = requests.get(
+            "{}todos?userId={}".format(
+                api_url, user)).json()
+        with open("{}.csv".format(user), "w") as csvfile:
+            writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+            for task in all_tasks:
+                writer.writerow(
+                    (task.get("userId"),
+                     username,
+                     task.get("completed"),
+                        task.get("title")))
