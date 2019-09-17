@@ -9,7 +9,8 @@ import sys
 
 if __name__ == "__main__":
     usr_id = sys.argv[1]
-    todo_list = requests.get("https://jsonplaceholder.typicode.com/todos").json()
+    todo_list = requests.get(
+        "https://jsonplaceholder.typicode.com/todos").json()
     user = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(
         usr_id)).json()
     username = user.get("username")
