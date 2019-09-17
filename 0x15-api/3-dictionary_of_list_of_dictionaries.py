@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-create a dictionary list of dictionaries
+ create a dictionary of dictionaries
 """
 import json
 import requests
@@ -8,15 +8,26 @@ import sys
 
 
 if __name__ == "__main__":
-    root = "https://jsonplaceholder.typicode.com"
-    users = requests.get(root + "/users")
-    for names in users.json():
-        usr_id = names.get('id')
-        todo = requests.get(root + "/todos", params={"userId": usr_id})
-        csv_arr = []
-        for tasks in todo.json():
-            csv_arr.append({"task": tasks.get("title"),
-                            "completed": str(tasks.get("completed")),
-                            "username": names.get("name")})
-        with open("todo_all_employees.json", 'a') as f:
-            f.write(json.dumps({usr_id: csv_arr}))
+    req = requests.get("https://jsonplaceholder.typicode.com/todos")
+    data = req.json()
+
+    req2 = requests.get("https://jsonplaceholder.typicode.com/users")
+    users = req2.json()
+    json_data = {}
+    task_value = {}
+    for user in users:
+        json_data[user.get("id")] = []
+
+    with open('todo_all_employees.json', 'w') as outfile:
+        for task in data:
+            req3 = requests.get("https://jsonplaceholder.typicode.com/users/{}"
+                                .format(task.get("userId")))
+            specific_user = req3.json()
+            username = specific_user.get("username")
+            task_value["username"] = username
+            task_value["task"] = task.get("title")
+            task_value["completed"] = task.get("completed")
+            value = json_data.get(task.get("userId"))
+            value.append(task_value)
+            task_value = {}
+        json.dump(json_data, outfile)
