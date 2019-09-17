@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
- Python Script and export json to CSV
+python script to export to csv
 """
 import csv
 import requests
