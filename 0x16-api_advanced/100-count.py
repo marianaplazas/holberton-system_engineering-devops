@@ -7,7 +7,7 @@ recurse
 
 def recurse(subreddit, after=None, all_results=[]):
     'return the number of posts'
-     param = {}
+    param = {}
     if after is not None:
         param = {'after': after}
     url = 'https://reddit.com/r/' + subreddit + '/hot/.json'
