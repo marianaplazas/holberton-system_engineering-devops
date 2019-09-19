@@ -5,7 +5,7 @@ module of recursion
 """
 
 def recurse(subreddit, hot_list=[], after=""):
-    'ask recursive'
+    'ask recursive reddit'
     headers = {'User-Agent': 'Hello_User'}
     req = get('https://api.reddit.com/r/{}/hot?after={}'.
                format(subreddit, after), headers=headers).json()
