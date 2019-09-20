@@ -4,11 +4,13 @@ from requests import get
 module of recursion
 """
 
+
 def recurse(subreddit, hot_list=[], after=""):
     'ask recursive reddit'
     headers = {'User-Agent': 'Hello_User'}
-    req = get('https://api.reddit.com/r/{}/hot?after={}'.
-               format(subreddit, after), headers=headers, allow_redirects=False).json()
+    req = get('https://api.reddit.com/r/{}/hot?after={}'.format(
+        subreddit, after), headers=headers,
+              allow_redirects=False).json()
     try:
         key = req['data']['after']
         parent = req['data']['children']
